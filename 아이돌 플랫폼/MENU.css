@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+       
+}
+.header{
+    width: 1356;
+    height: 57;
+    padding: 10px;
+      position: fixed;
+      top: 0;
+     left: 0;
+      width: 100%;
+   display: flex;
+    justify-content:  space-between;
+    border-bottom: 2px solid black;
+
+}
+
+.header-left{
+    display: flex; 
+  align-items: center;
+   gap: 16px;
+   width: 566px;
+}
+
+.header-right{
+    width: 566px;
+    display: flex;
+    justify-content: end; 
+    align-items: center; 
+     gap: 10px;
+}
+.menu-button{
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    
+}
+
+.menu-button:hover{
+    background-color: rgba(165, 165, 165, 0.2);
+ 
+}
+.menu-icon{
+    
+     width: 24px;
+    height: 24px;
+}
+
+.rogo-icon{
+    cursor : pointer;
+    width: 24px;
+    height: 24px;
+    max-width: 100%;
+  
+}
+
+.archivo-black-regular {
+   cursor : pointer;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    
+}
+.joing-icon{
+    
+     width: 24px;
+    height: 24px;
+}
+.message-icon{
+    
+     width: 24px;
+    height: 24px;
+}
+.pp-icon{
+      width: 24px;
+    height: 24px;
+}
+.line-icon{
+      width: 24px;
+    height: 24px;
+    color: rgba(165, 165, 165, 0.2);
+}
+.bg-icon{
+    width: 1144px;
+    height: 381px;
+}

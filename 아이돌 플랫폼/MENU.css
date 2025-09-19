@@ -1,90 +1,216 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-       
+
 }
-.header{
+
+header {
     width: 1356;
     height: 57;
     padding: 10px;
-      position: fixed;
-      top: 0;
-     left: 0;
-      width: 100%;
-   display: flex;
-    justify-content:  space-between;
-    border-bottom: 2px solid black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
 
 }
 
-.header-left{
-    display: flex; 
-  align-items: center;
-   gap: 16px;
-   width: 566px;
+section {
+    margin-top: 53px;
 }
 
-.header-right{
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 566px;
+}
+
+.header-right {
     width: 566px;
     display: flex;
-    justify-content: end; 
-    align-items: center; 
-     gap: 10px;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
 }
-.menu-button{
+
+.menu-button {
     cursor: pointer;
     background-color: #fff;
     border: none;
-    
+
 }
 
-.menu-button:hover{
+.menu-button:hover {
     background-color: rgba(165, 165, 165, 0.2);
- 
+
 }
-.menu-icon{
-    
-     width: 24px;
+
+.menu-icon {
+
+    width: 24px;
     height: 24px;
 }
 
-.rogo-icon{
-    cursor : pointer;
+.rogo-icon {
+    cursor: pointer;
     width: 24px;
     height: 24px;
     max-width: 100%;
-  
+
 }
 
 .archivo-black-regular {
-   cursor : pointer;
-  font-family: "Archivo Black", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-    
+    cursor: pointer;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
 }
-.joing-icon{
-    
-     width: 24px;
+
+.joing-icon {
+
+    width: 24px;
     height: 24px;
 }
-.message-icon{
-    
-     width: 24px;
+
+.message-icon {
+
+    width: 24px;
     height: 24px;
 }
-.pp-icon{
-      width: 24px;
+
+.pp-icon {
+    width: 24px;
     height: 24px;
 }
-.line-icon{
-      width: 24px;
+
+.line-icon {
+    width: 24px;
     height: 24px;
     color: rgba(165, 165, 165, 0.2);
 }
-.bg-icon{
-    width: 1144px;
-    height: 381px;
+
+.bg-icon {
+    width: 100%;
+    height: 452px;
 }
+
+.kategore ul {
+    display: flex;
+    justify-content: flex-start;
+    transform: translateX(-200px);
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    justify-content: center;
+    width: 100%;
+}
+
+li {
+    cursor: pointer;
+}
+
+.profile {
+    border-top: 1px solid black;
+}
+
+.baro {
+    vertical-align: middle;
+    width: 16px;
+    /* 아이콘 크기 조정 필요 시 */
+    height: 16px;
+
+}
+/* -------------------------------------------------------- */
+.post-content .hidden-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.post-content.expanded .hidden-content {
+    max-height: 500px;
+}
+
+.read-more-button {
+    background: none;
+    border: none;
+    color: #38a1f3;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+/* 부모 요소인 .profile에 position: relative를 적용하여 자식 요소의 위치 기준점을 설정합니다. */
+.profile {
+    position: relative; /* 자식 요소의 absolute 위치 기준점이 됩니다. */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* '더 보기' 버튼을 오른쪽 아래로 옮깁니다. */
+.read-more-button {
+    position: absolute; /* 부모 요소인 .profile을 기준으로 위치를 정합니다. */
+    bottom: 10px; /* 아래쪽에서 10px 떨어진 위치 */
+    right: 20px; /* 오른쪽에서 20px 떨어진 위치 */
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.read-more-button:hover {
+    text-decoration: underline;
+}
+
+/* 다른 CSS 코드는 그대로 유지합니다. */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.post {
+    padding-bottom: 40px; /* 버튼과 겹치지 않도록 충분한 여백을 줍니다. */
+}
+
+.post-content {
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.post-content.expanded {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+}
+
+
+

@@ -1,0 +1,191 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    cursor: pointer;
+    list-style: none;
+}
+
+.archivo-black-regular {
+    cursor: pointer;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* --- */
+
+/* 헤더 스타일 */
+header {
+    height: 57px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+/* 헤더 스크롤 시 그림자 효과 */
+header.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-right {
+    gap: 10px;
+}
+
+.menu-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.menu-button:hover {
+    background-color: rgba(165, 165, 165, 0.2);
+    border-radius: 50%;
+}
+
+.menu-icon,
+.rogo-icon,
+.joing-icon,
+.message-icon,
+.pp-icon,
+.line-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.line-icon {
+    color: rgba(165, 165, 165, 0.2);
+}
+
+.rogo-icon {
+    max-width: 100%;
+}
+
+/* --- */
+
+/* 섹션 및 배경 이미지 스타일 */
+section {
+    margin-top: 57px;
+    /* 헤더 높이만큼 마진을 줍니다. */
+}
+
+.bg-icon {
+    width: 100%;
+    height: 452px;
+    object-fit: cover;
+}
+
+/* --- */
+
+/* 카테고리 스타일 */
+.kategore ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.kategore li.active {
+    font-weight: bold;
+    color: #38a1f3;
+}
+
+.kategore {
+    border-bottom: 1px solid #000000;
+}
+
+.baro {
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+
+}
+
+/* --- */
+
+/* 프로필 및 포스트 스타일 */
+.profile {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.post {
+    padding-bottom: 40px;
+}
+
+.post-content {
+    max-height: 100px;
+    /* 초기 높이 설정 */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+/* 'expanded' 클래스 추가 시, 내용 전체 표시 */
+.profile.expanded .post-content {
+    max-height: 1000px;
+    /* 충분히 큰 값으로 설정 */
+}
+
+/* '더 보기' 버튼 스타일 */
+.read-more-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.read-more-button:hover {
+    text-decoration: underline;
+}

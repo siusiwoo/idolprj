@@ -129,3 +129,88 @@ li {
     height: 16px;
 
 }
+/* -------------------------------------------------------- */
+.post-content .hidden-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.post-content.expanded .hidden-content {
+    max-height: 500px;
+}
+
+.read-more-button {
+    background: none;
+    border: none;
+    color: #38a1f3;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+/* 부모 요소인 .profile에 position: relative를 적용하여 자식 요소의 위치 기준점을 설정합니다. */
+.profile {
+    position: relative; /* 자식 요소의 absolute 위치 기준점이 됩니다. */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* '더 보기' 버튼을 오른쪽 아래로 옮깁니다. */
+.read-more-button {
+    position: absolute; /* 부모 요소인 .profile을 기준으로 위치를 정합니다. */
+    bottom: 10px; /* 아래쪽에서 10px 떨어진 위치 */
+    right: 20px; /* 오른쪽에서 20px 떨어진 위치 */
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.read-more-button:hover {
+    text-decoration: underline;
+}
+
+/* 다른 CSS 코드는 그대로 유지합니다. */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.post {
+    padding-bottom: 40px; /* 버튼과 겹치지 않도록 충분한 여백을 줍니다. */
+}
+
+.post-content {
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.post-content.expanded {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+}
+
+
+

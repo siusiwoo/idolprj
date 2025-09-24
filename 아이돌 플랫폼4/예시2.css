@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* 메뉴를 여는 버튼 스타일 */
+.menu-toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 101;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    padding: 0;
+}
+
+.menu-toggle-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* 사이드 메뉴 컨테이너: 초기 상태는 숨겨져 있음 */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* ★ 화면 왼쪽 밖으로 메뉴를 숨깁니다. */
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    transition: left 0.4s ease-in-out; /* ★ '좌라락' 애니메이션 효과 */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* .active 클래스가 추가되면 메뉴가 나타남 */
+.side-menu.active {
+    left: 0;
+}
+
+/* 오버레이: 초기 상태는 투명하게 숨겨져 있음 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0; /* ★ 투명도를 0으로 설정해 숨김 */
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* .active 클래스가 추가되면 오버레이가 나타남 */
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 메뉴 내부 스타일링 */
+.menu-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

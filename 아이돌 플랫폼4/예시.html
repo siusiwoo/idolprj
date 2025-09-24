@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>탭 메뉴 예시</title>
+  <style>
+    body { font-family: sans-serif; }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .tab.active {
+      background: #007bff;
+      color: white;
+    }
+    .content {
+      display: none;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 탭 버튼 -->
+  <div class="tabs">
+    <div class="tab active" data-target="content1">하이라이트 1</div>
+    <div class="tab" data-target="content2">하이라이트 2</div>
+    <div class="tab" data-target="content3">하이라이트 3</div>
+  </div>
+
+  <!-- 탭 내용 -->
+  <div id="content1" class="content active">
+    <h2>내용 1</h2>
+    <p>여기는 첫 번째 하이라이트에 해당하는 내용입니다.</p>
+  </div>
+  <div id="content2" class="content">
+    <h2>내용 2</h2>
+    <p>여기는 두 번째 하이라이트 내용입니다.</p>
+  </div>
+  <div id="content3" class="content">
+    <h2>내용 3</h2>
+    <p>세 번째 하이라이트 내용이 여기에 표시됩니다.</p>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // 모든 탭/내용 초기화
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // 선택된 탭/내용 활성화
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

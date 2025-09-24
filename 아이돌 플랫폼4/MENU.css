@@ -1,0 +1,366 @@
+/* ===========================
+   기본 스타일
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  cursor: pointer;
+  list-style: none;
+}
+
+.archivo-black-regular {
+  cursor: pointer;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ===========================
+   헤더 스타일
+=========================== */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* 메뉴를 여는 버튼 스타일 */
+.menu-toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 101;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    padding: 0;
+  
+}
+
+.menu-toggle-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* 사이드 메뉴 컨테이너: 초기 상태는 숨겨져 있음 */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* ★ 화면 왼쪽 밖으로 메뉴를 숨깁니다. */
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    transition: left 0.4s ease-in-out; /* ★ '좌라락' 애니메이션 효과 */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* .active 클래스가 추가되면 메뉴가 나타남 */
+.side-menu.active {
+    left: 0;
+}
+
+/* 오버레이: 초기 상태는 투명하게 숨겨져 있음 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0; /* ★ 투명도를 0으로 설정해 숨김 */
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* .active 클래스가 추가되면 오버레이가 나타남 */
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 메뉴 내부 스타일링 */
+.menu-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    margin-top: 32px;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 햄버거 버튼 아이콘 이미지에 대한 스타일 */
+.menu-icon {
+    width: 25px;
+    height: 25px;
+}
+header {
+  height: 57px;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  z-index: 1000;
+}
+
+
+/* 헤더 스크롤 시 그림자 효과 */
+header.scrolled {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-right {
+  gap: 10px;
+}
+
+
+.menu-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.menu-button:hover {
+  background-color: rgba(165, 165, 165, 0.2);
+  border-radius: 50%;
+}
+
+.menu-icon,
+.joing-icon,
+.message-icon,
+.pp-icon,
+.line-icon {
+  width: 24px;
+  height: 24px;
+}
+.rogo-icon{
+    
+    width: 24px;
+  height: 24px;
+}
+.header-left{
+    margin-left: 30px;
+}
+
+.line-icon {
+  color: rgba(165, 165, 165, 0.2);
+}
+
+.rogo-icon {
+  max-width: 100%;
+ 
+}
+
+/* ===========================
+   섹션 및 배경 이미지 스타일
+=========================== */
+section {
+  margin-top: 57px; /* 헤더 높이만큼 마진 */
+}
+
+#main_background{
+    height: 452px;
+    
+}
+.bg-icon {
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/배경1.jpg");
+    background-size: cover;
+}
+
+/* ===========================
+   카테고리(메뉴 탭) 스타일
+=========================== */
+.kategore {
+ 
+  margin: 20px 0;
+}
+
+.kategore ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.kategore li.active {
+  font-weight: bold;
+  color: #007bff;
+}
+
+#upload-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* 원형 버튼으로 만듭니다 */
+    background-color: #007bff; /* 파란색 배경 */
+    color: white; /* 흰색 글씨 */
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    
+}
+
+.button-container{
+     display: flex;
+    justify-content: flex-end; 
+}
+.baro {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+/* 탭 내용 */
+.tab-content {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center; /*  글자 내용만 가운데 정렬 */
+}
+
+
+      
+
+
+.tab-content.active {
+  display: block;
+}
+
+/* ===========================
+   프로필 및 포스트 스타일
+=========================== */
+.profile {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.post {
+  padding-bottom: 40px;
+}
+
+.post-content {
+  max-height: 100px; /* 초기 높이 */
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* 'expanded' 클래스 추가 시 전체 표시 */
+.profile.expanded .post-content {
+  max-height: 1000px; /* 충분히 큰 값 */
+}
+
+/* '더 보기' 버튼 */
+.read-more-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+  padding: 0;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.read-more-button:hover {
+  text-decoration: underline;
+}
+.chaeng{
+  width: 290px;
+  height: 434px;
+}
+
+#image{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.modal-dialog {
+  max-width: 600px; /* 모달 최대 크기 지정 */
+}
+
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden; /* 삐져나오는 부분 잘라내기 */
+}
+
+.modal-content video,
+.modal-content iframe,
+.modal-content img {
+  width: 100%;   /* 부모 크기에 맞게 */
+  height: auto;  /* 비율 유지 */
+  display: block;
+}
+.profileclick{
+     cursor: pointer;
+}

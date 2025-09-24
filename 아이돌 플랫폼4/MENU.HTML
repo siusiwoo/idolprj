@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="MENU.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>프로미스나인 플랫폼</title>
+</head>
+
+<body>
+  <div class="main" class="container-fluid p-0">
+    <header>
+      <div class="header-left">
+        <span class="menu">
+          <button class="menu-button menu-toggle-btn" id="open-menu-btn">
+            <img src="./img/menu 아이콘.png" alt="메뉴 아이콘" class="menu-icon" />
+          </button>
+          <div class="overlay"></div>
+          <div id="side-menu" class="side-menu">
+            <div class="menu-header">
+              <p>로그인하고<br>나만의 아티스트를 만나보세요!</p>
+              <button id="login-btn" class="login-btn btn btn-primary w-100 mb-2">로그인</button>
+              <button id="sing_up-btn" class="login-btn btn btn-outline-primary w-100">회원가입</button>
+            </div>
+          </div>
+        </span>
+        <span class="rogo">
+          <img src="./img/프로미스나인 로고.jpg" alt="프로미스나인 로고" class="rogo-icon" />
+        </span>
+        <span>
+          <h2 class="archivo-black-regular name">fromis_9</h2>
+        </span>
+      </div>
+      <div class="header-right">
+        <span class="pp">
+          <img src="./img/사람아이콘.png" alt="pp = 사람 피플 " class="pp-icon" />
+        </span>
+        <span class="line">
+          <img src="./img/line.png" alt="선" class="line-icon" />
+        </span>
+        <button class="menu-button">
+          <img src="./img/종 아이콘.png" alt="종 아이콘" class="joing-icon" />
+        </button>
+        <button class="menu-button">
+          <img src="./img/메세지.png" alt="메세지 아이콘" class="message-icon" />
+        </button>
+      </div>
+      <div id="overlay" class="overlay"></div>
+    </header>
+    <section style="margin-top: 53px">
+      <div id="main_background">
+        <img src="./img/배경1.jpg" alt="bg는 배경 백그라운드" class="bg-icon" />
+      </div>
+    </section>
+    <div class="kategore">
+      <ul>
+        <li data-target="highlight" class="active">highlight</li>
+        <li data-target="fan">fan</li>
+        <li data-target="artist">Artist</li>
+        <li data-target="fanletter">Fan Letter</li>
+        <li data-target="media">Media</li>
+        <li data-target="live">LIVE</li>
+        <li data-target="notice">Notice</li>
+        <li data-target="shop">
+          shop
+          <img src="./img/바로가기.png" alt="바로가기아이콘" class="baro" />
+        </li>
+      </ul>
+    </div>
+    <div class="tab-contents">
+      <div id="highlight" class="tab-content active">
+        <h2>Highlight</h2>
+        <p>하이라이트 관련 내용입니다.</p>
+        <div class="button-container">
+          <button id="upload-button">+</button>
+        </div>
+        <input type="file" id="video-input" accept="video/*" style="display: none;">
+        <div id="status-message"></div>
+      </div>
+      <div id="fan" class="tab-content">
+        <h2>Fan</h2>
+        <p>팬 관련 콘텐츠입니다.</p>
+      </div>
+      <div id="artist" class="tab-content">
+        <h2>Artist</h2>
+        <div class="row mt-4 g-10" id="image">
+
+          <!-- 멤버 1 -->
+          <div class="col-6 col-md-4 col-lg-2 mb-2">
+            <img src="./idorImg/KakaoTalk_20250922_154202713_02.jpg" class="img-fluid rounded shadow-sm artist-img profileclick"
+              alt="송하영" data-bs-toggle="modal" data-bs-target="#songModal"
+             >
+            <h6 class="mt-2">송하영</h6>
+          </div>
+
+          <!-- 멤버 2 -->
+          <div class="col-6 col-md-4 col-lg-2 mb-2">
+            <img src="./idorImg/KakaoTalk_20250922_154202713_05.jpg" class="img-fluid rounded shadow-sm artist-img profileclick"
+              alt="박지원" data-bs-toggle="modal" data-bs-target="#wonModal" >
+            <h6 class="mt-2">박지원</h6>
+          </div>
+
+          <!-- 멤버 3 -->
+          <div class="col-6 col-md-4 col-lg-2 mb-2">
+            <img src="./idorImg/KakaoTalk_20250922_154202713_11.jpg" class="img-fluid rounded shadow-sm artist-img profileclick"
+              alt="이나경" data-bs-toggle="modal" data-bs-target="#ggoModal" 
+              data-bs-img="./idorImg/KakaoTalk_20250922_154202713_11.jpg" >
+            <h6 class="mt-2">이나경</h6>
+          </div>
+
+          <!-- 멤버 4 -->
+          <div class="col-6 col-md-4 col-lg-2 mb-2">
+            <img src="./idorImg/KakaoTalk_20250922_154202713_06.jpg" class="img-fluid rounded shadow-sm artist-img profileclick"
+              alt="이채영" data-bs-toggle="modal" data-bs-target="#cheangModal" 
+              >
+            <h6 class="mt-2">이채영</h6>
+          </div>
+
+          <!-- 멤버 5 -->
+          <div class="col-6 col-md-4 col-lg-2 mb-2">
+            <img src="./idorImg/KakaoTalk_20250922_154202713_12.jpg" class="img-fluid rounded shadow-sm artist-img profileclick"
+              alt="백지헌" data-bs-toggle="modal" data-bs-target="#backModal" 
+              >
+            <h6 class="mt-2">백지헌</h6>
+          </div>
+        </div>
+      </div>
+      <div id="fanletter" class="tab-content">
+        <h2>Fan Letter</h2>
+        <p>팬레터 게시판 내용입니다.</p>
+      </div>
+      <div id="media" class="tab-content">
+        <h2>Media</h2>
+        <p>영상, 사진 자료실입니다.</p>
+      </div>
+      <div id="live" class="tab-content">
+        <h2>LIVE</h2>
+        <p>실시간 방송/라이브 관련입니다.</p>
+      </div>
+      <div id="notice" class="tab-content">
+        <h2>Notice</h2>
+        <p>공지사항입니다.</p>
+      </div>
+      <div id="shop" class="tab-content">
+        <h2>Shop</h2>
+        <p>굿즈샵 안내입니다.</p>
+      </div>
+    </div>
+    <div class="profile">
+      <div class="profile-header">
+        <img src=".\./img/프로필.svg" alt="프로필 사진" class="profile-img" />
+        <h3 class="profile-name">fromis_9</h3>
+      </div>
+      <div class="post">
+        <div class="post-content">
+          <p>
+            fromis_9(프로미스나인)은 2017년 Mnet 《아이돌학교》를 통해 결성된 걸그룹으로, 그룹명에는 ‘아이돌학교에서 시작된 그룹(from idol school)’과 ‘멤버들이 팬들과의
+            약속(promise)을 지킨다’는 의미가 담겨 있다. 2024년 12월 플레디스 엔터테인먼트와의 계약이 종료된 후, 2025년 1월 ASND와 전속계약을 체결하며 새로운 소속사에서 활동을
+            이어가고 있다. 그룹명은 Pledis와 ASND 간 협의를 통해 그대로 사용하기로 결정되었다.
+            현재 멤버는 송하영, 박지원, 이나경, 이채영, 백지헌 총 5명으로, 장규리는 2022년 계약 만료와 함께 그룹을 떠났으며, 이새롬·이서연·노지선은 2024년 말 계약 종료 이후 탈퇴했다.
+            프로미스나인은 2025년 6월 25일, 5인 체제 첫 미니앨범 《From Our 20’s》를 발매하며 새 출발을 알렸다. 타이틀곡은 〈Like You Better〉로, 음악방송과 다양한 활동을
+            통해 팬들과의 만남을 이어가고 있다.
+          </p>
+        </div>
+        <button class="read-more-button">더 보기</button>
+      </div>
+    </div>
+  </div>
+  <!-- 송하영 모달 -->
+  <div class="modal fade" id="songModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="artistModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <video src="./idorImg/KakaoTalk_20250922_153705849.mp4" class="hayoung-video"></video>
+          <h6 id="artistModalGroup">프로미스나인</h6>
+          <p id="artistModalDescription">
+            생년월일: 1997년 9월 29일 (29세) <br>
+            
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 박지원 모달 -->
+   <div class="modal fade" id="wonModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="artistModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <video src="./idorImg/Download.mp4" class="hayoung-video"  ></video>
+          <h6 id="artistModalGroup"></h6>
+          <p id="artistModalDescription">안녕2</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 이나경 모달 -->
+   <div class="modal fade" id="ggoModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="artistModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <video src="./idorImg/Download (1).mp4" class="hayoung-video"  ></video>
+          <h6 id="artistModalGroup"></h6>
+          <p id="artistModalDescription">안녕3</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- 이채영 모달 -->
+   <div class="modal fade" id="cheangModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="artistModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <video src="./idorImg/TikVideo.App_7132101353962343682.mp4" class="hayoung-video"  ></video>
+          <h6 id="artistModalGroup"></h6>
+          <p id="artistModalDescription">안녕4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- 백지헌 모달 -->
+   <div class="modal fade" id="backModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="artistModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <video src="./idorImg/SSYouTube.online_일주일 만에 400만 뷰 나온 그 눈웃음_1080p.mp4"></video>
+          <h6 id="artistModalGroup"></h6>
+          <p id="artistModalDescription">안녕5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="MENU.js"></script>
+</body>
+
+</html>

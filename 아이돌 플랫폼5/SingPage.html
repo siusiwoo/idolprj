@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================
+            기본 스타일
+        =========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .archivo-black-regular {
+            cursor: pointer;
+            font-family: "Archivo Black", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 150px auto 50px;
+            /* 헤더 공간을 확보하기 위해 위쪽 마진을 넉넉히 줍니다. */
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 유효성 검사 */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .signup-container {
+            max-width: 450px;
+            margin: 120px auto 50px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+
+        .email-valid {
+            color: green;
+        }
+
+        .email-invalid {
+            color: red;
+        }
+
+        .password-match {
+            color: green;
+        }
+
+        .password-mismatch {
+            color: red;
+        }
+
+        /* ===========================
+        헤더 스타일
+        =========================== */
+        header {
+            height: 57px;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            z-index: 1000;
+        }
+
+        .header-left,
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-right {
+            gap: 10px;
+        }
+
+        .menu-button {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .menu-button:hover {
+            background-color: rgba(165, 165, 165, 0.2);
+            border-radius: 50%;
+        }
+
+        .menu-icon,
+        .joing-icon,
+        .message-icon,
+        .pp-icon,
+        .line-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .rogo-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .header-left {
+            margin-left: 30px;
+        }
+
+        .line-icon {
+            color: rgba(165, 165, 165, 0.2);
+        }
+
+        .rogo-icon {
+            max-width: 100%;
+        }
+
+        /* 사이드 메뉴 스타일 */
+        .menu-toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: left 0.4s ease-in-out;
+            padding: 20px;
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-header {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+            margin-top: 32px;
+        }
+
+        .login-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .archivo-black-regular {
+            cursor: pointer;
+            font-family: "Archivo Black", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <span class="menu">
+                <button class="menu-button menu-toggle-btn" id="open-menu-btn">
+                    <img src="./img/menu 아이콘.png" alt="메뉴 아이콘" class="menu-icon" />
+                </button>
+                <div class="overlay"></div>
+                <div id="side-menu" class="side-menu">
+                    <div class="menu-header">
+                        <p>로그인하고<br>나만의 아티스트를 만나보세요!</p>
+                        <button id="login-btn" class="login-btn btn btn-primary w-100 mb-2">로그인</button>
+                        <button id="sing_up-btn" class="login-btn btn btn-outline-primary w-100">회원가입</button>
+                    </div>
+                </div>
+            </span>
+            <span class="rogo">
+                <img src="./img/프로미스나인 로고.jpg" alt="프로미스나인 로고" class="rogo-icon" />
+            </span>
+            <span>
+                <h2 class="archivo-black-regular name" id="from_menu">fromis_9</h2>
+            </span>
+        </div>
+        <div class="header-right">
+            <span class="pp">
+                <img src="./img/사람아이콘.png" alt="pp = 사람 피플 " class="pp-icon" />
+            </span>
+            <span class="line">
+                <img src="./img/line.png" alt="선" class="line-icon" />
+            </span>
+            <button class="menu-button">
+                <img src="./img/종 아이콘.png" alt="종 아이콘" class="joing-icon" />
+            </button>
+            <button class="menu-button">
+                <img src="./img/메세지.png" alt="메세지 아이콘" class="message-icon" />
+            </button>
+        </div>
+        <div id="overlay" class="overlay"></div>
+    </header>
+
+    <div class="container">
+        <div class="signup-container mx-auto">
+            <h1 class="text-center mb-4 ">회원가입</h1>
+            <form>
+                <div class="mb-3">
+                    <label for="userId" class="form-label">아이디</label>
+                    <input type="text" class="form-control" id="userId" placeholder="아이디를 입력하세요">
+                    <p id="idStatus" class="mt-2"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="userEmail" class="form-label">이메일</label>
+                    <input type="email" class="form-control" id="userEmail" placeholder="이메일을 입력하세요">
+                    <p id="emailStatus" class="mt-2"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="userPassword" class="form-label">비밀번호</label>
+                    <input type="password" class="form-control" id="userPassword" placeholder="비밀번호를 입력하세요">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호를 다시 입력하세요">
+                    <p id="passwordMatchStatus" class="mt-2"></p>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">가입하기</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // 아이디  HTML 요소 가져오기
+        const userIdInput = document.getElementById('userId');
+        const idStatus = document.getElementById('idStatus');
+
+        // 아이디 입력란에 키보드 입력이 있을 때마다 실행
+        userIdInput.addEventListener('keyup', () => {
+            // 입력된 값 가져오기
+            const idValue = userIdInput.value;
+
+            // 아이디의 길이가 4글자 이상이고, '@'가 포함되지 않았는지 확인
+            if (idValue.length >= 4 && !idValue.includes('@')) {
+                idStatus.textContent = '올바른 형식입니다.';
+                idStatus.className = 'email-valid';
+            } else {
+                idStatus.textContent = '형식에 맞지 않습니다.';
+                idStatus.className = 'email-invalid';
+            }
+        });
+        //이메일 html 요소 가져오기
+        const userEmailInput = document.getElementById('userEmail');
+        const emailStatus = document.getElementById('emailStatus');
+
+        userEmailInput.addEventListener('keyup', () => {
+            const emailValue = userEmailInput.value.trim();
+
+            // 입력창이 비어있을 때
+            if (emailValue.length === 0) {
+                emailStatus.textContent = '';
+                emailStatus.className = '';
+                return;
+            }
+
+            // 1. 글자 수가 4글자 미만일 때 (가장 먼저 검사)
+            if (emailValue.length < 8) {
+                emailStatus.textContent = '아이디는 8글자 이상이어야 합니다.';
+                emailStatus.className = 'invalid';
+            }
+            // 2. 글자 수는 충분하지만 @ 기호가 없을 때
+            else if (!emailValue.includes('@')) {
+                emailStatus.textContent = '@가 빠졌습니다.';
+                emailStatus.className = 'invalid';
+            }
+            // 3. 모든 조건을 통과했을 때
+            else {
+                emailStatus.textContent = '올바른 형식입니다.';
+                emailStatus.className = 'valid';
+            }
+        });
+
+        // 비밀번호 HTML 요소 가져오기
+        const passwordInput = document.getElementById('userPassword');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordMatchStatus = document.getElementById('passwordMatchStatus');
+
+        // 비밀번호 확인 입력란에 키보드 입력이 있을 때마다 실행
+        confirmPasswordInput.addEventListener('keyup', () => {
+            // 두 비밀번호 입력란의 값이 일치하는지 확인
+            if (passwordInput.value === confirmPasswordInput.value) {
+                // 일치하면 초록색 메시지 출력
+                passwordMatchStatus.textContent = '비밀번호가 일치합니다.';
+                passwordMatchStatus.className = 'password-match';
+            } else {
+                // 일치하지 않으면 빨간색 메시지 출력
+                passwordMatchStatus.textContent = '비밀번호가 일치하지 않습니다.';
+                passwordMatchStatus.className = 'password-mismatch';
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            // === 헤더 및 메뉴 기능 ===
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const sideMenu = document.getElementById('side-menu');
+            const overlay = document.getElementById('overlay');
+            const loginBtn = document.getElementById('login-btn');
+            const singUpBtn = document.getElementById('sing_up-btn');
+            const header = document.querySelector('header');
+             const fromMenu = document.getElementById('from_menu');
+
+            if (openMenuBtn && sideMenu && overlay) {
+                openMenuBtn.addEventListener('click', () => {
+                    sideMenu.classList.add('active');
+                    overlay.classList.add('active');
+                });
+                overlay.addEventListener('click', () => {
+                    sideMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            }
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    window.location.href = 'LoginPage.html';
+                      alert('로그인 페이지입니다.');
+                });
+            }
+
+            if (singUpBtn) {
+                singUpBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    alert('이미 회원가입 페이지입니다.');
+                });
+            }
+
+            if (fromMenu) {
+            fromMenu.addEventListener('click', () => {
+                window.location.href = 'MENU.HTML';
+                 alert('메인 페이지로 이동합니다!');
+            });
+        }
+        });
+       
+        
+    </script>
+</body>
+
+</html>

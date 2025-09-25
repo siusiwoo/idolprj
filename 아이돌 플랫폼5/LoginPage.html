@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===========================
+            기본 스타일
+        =========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .archivo-black-regular {
+            cursor: pointer;
+            font-family: "Archivo Black", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 150px auto 50px; /* 헤더 공간을 확보하기 위해 위쪽 마진을 넉넉히 줍니다. */
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===========================
+            헤더 스타일
+        =========================== */
+
+        /* 메뉴를 여는 버튼 스타일 */
+        .menu-toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            padding: 0;
+        }
+
+        .menu-toggle-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+
+        /* 사이드 메뉴 컨테이너: 초기 상태는 숨겨져 있음 */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -100%; /* 화면 왼쪽 밖으로 메뉴를 숨깁니다. */
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: left 0.4s ease-in-out; /* '좌라락' 애니메이션 효과 */
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* .active 클래스가 추가되면 메뉴가 나타남 */
+        .side-menu.active {
+            left: 0;
+        }
+
+        /* 오버레이: 초기 상태는 투명하게 숨겨져 있음 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            opacity: 0; /* 투명도를 0으로 설정해 숨김 */
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        /* .active 클래스가 추가되면 오버레이가 나타남 */
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 메뉴 내부 스타일링 */
+        .menu-header {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+            margin-top: 32px;
+        }
+
+        .login-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .singup-btn{
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: solid black 1px;
+        }
+
+        /* 햄버거 버튼 아이콘 이미지에 대한 스타일 */
+        .menu-icon {
+            width: 25px;
+            height: 25px;
+        }
+        header {
+            height: 57px;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            z-index: 1000;
+        }
+
+        .header-left,
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-right {
+            gap: 10px;
+        }
+
+
+        .menu-button {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .menu-button:hover {
+            background-color: rgba(165, 165, 165, 0.2);
+            border-radius: 50%;
+        }
+
+        .menu-icon,
+        .joing-icon,
+        .message-icon,
+        .pp-icon,
+        .line-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .rogo-icon{
+            width: 24px;
+            height: 24px;
+        }
+        .header-left{
+            margin-left: 30px;
+        }
+
+        .line-icon {
+            color: rgba(165, 165, 165, 0.2);
+        }
+
+        .rogo-icon {
+            max-width: 100%;
+        }
+
+        /* 유효성 검사 메시지 스타일 */
+        .id-invalid {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <span class="menu">
+                <button class="menu-button menu-toggle-btn" id="open-menu-btn">
+                    <img src="./img/menu 아이콘.png" alt="메뉴 아이콘" class="menu-icon" />
+                </button>
+                <div class="overlay"></div>
+                <div id="side-menu" class="side-menu">
+                    <div class="menu-header">
+                        <p>로그인하고<br>나만의 아티스트를 만나보세요!</p>
+                        <button id="login-btn" class="login-btn btn btn-primary w-100 mb-2">로그인</button>
+                        <button id="sing_up-btn" class="singup-btn btn btn-outline-primary w-100">회원가입</button>
+                    </div>
+                </div>
+            </span>
+            <span class="rogo">
+                <img src="./img/프로미스나인 로고.jpg" alt="프로미스나인 로고" class="rogo-icon" />
+            </span>
+            <span>
+                <h2 class="archivo-black-regular name">fromis_9</h2>
+            </span>
+        </div>
+        <div class="header-right">
+            <span class="pp">
+                <img src="./img/사람아이콘.png" alt="pp = 사람 피플 " class="pp-icon" />
+            </span>
+            <span class="line">
+                <img src="./img/line.png" alt="선" class="line-icon" />
+            </span>
+            <button class="menu-button">
+                <img src="./img/종 아이콘.png" alt="종 아이콘" class="joing-icon" />
+            </button>
+            <button class="menu-button">
+                <img src="./img/메세지.png" alt="메세지 아이콘" class="message-icon" />
+            </button>
+        </div>
+        <div id="overlay" class="overlay"></div>
+    </header>
+
+    <div class="container login-container">
+        <h1 class="text-center mb-4">로그인</h1>
+        <form>
+            <div class="mb-3">
+                <label for="username" class="form-label">아이디</label>
+                <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요">
+                <div id="username-validation-message" class="id-invalid"></div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">비밀번호</label>
+                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+                <div id="password-validation-message" class="id-invalid"></div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" id="loginButton">로그인</button>
+           
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // HTML 요소들을 가져옵니다.
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const sideMenu = document.getElementById('side-menu');
+            const overlay = document.getElementById('overlay');
+            const loginBtn = document.getElementById('login-btn');
+            const singUpBtn = document.getElementById('sing_up-btn');
+            const loginPageBtn = document.getElementById('loginButton'); // 로그인 폼의 로그인 버튼
+
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const usernameValidationMessage = document.getElementById('username-validation-message');
+            const passwordValidationMessage = document.getElementById('password-validation-message');
+
+
+            // 메뉴 열기 버튼을 클릭했을 때
+            if (openMenuBtn && sideMenu && overlay) {
+                openMenuBtn.addEventListener('click', () => {
+                    sideMenu.classList.add('active');
+                    overlay.classList.add('active');
+                });
+
+                // 오버레이를 클릭했을 때 메뉴를 닫습니다.
+                overlay.addEventListener('click', () => {
+                    sideMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            }
+
+            // 사이드 메뉴의 로그인 버튼 클릭 시
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (event) => {
+                    event.preventDefault(); // 기본 이벤트 막기
+                    // 이미 로그인 페이지이므로 다른 동작을 수행하지 않음
+                    alert('이미 로그인 페이지입니다.');
+                });
+            }
+
+            // 사이드 메뉴의 회원가입 버튼 클릭 시
+            if (singUpBtn) {
+                singUpBtn.addEventListener('click', (event) => {
+                    event.preventDefault(); // 기본 이벤트 막기
+                    window.location.href = 'SingPage.html';
+                    alert('회원가입 페이지입니다.');
+                });
+            }
+
+            // 로그인 폼의 로그인 버튼 클릭 시 유효성 검사
+            if (loginPageBtn) {
+                loginPageBtn.addEventListener('click', (event) => {
+                    event.preventDefault(); // 폼 제출 막기
+                    
+                    let isValid = true;
+                    
+                    // 아이디 유효성 검사
+                    if (usernameInput.value.trim().length === 0) {
+                        usernameValidationMessage.textContent = '아이디를 입력해 주세요.';
+                        isValid = false;
+                    } else {
+                        usernameValidationMessage.textContent = '';
+                    }
+
+                    // 비밀번호 유효성 검사
+                    if (passwordInput.value.trim().length === 0) {
+                        passwordValidationMessage.textContent = '비밀번호를 입력해 주세요.';
+                        isValid = false;
+                    } else {
+                        passwordValidationMessage.textContent = '';
+                    }
+
+                    if (isValid) {
+                        alert('로그인 시도!');
+                        // 여기에 백엔드 서버로 로그인 정보를 전송하는 코드를 추가합니다.
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

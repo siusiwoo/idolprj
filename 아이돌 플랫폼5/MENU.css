@@ -389,3 +389,75 @@ height: 400px;
   display: flex;
   justify-content: center;
 }
+.poto {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 세로까지 가운데 */
+}
+
+.poto img {
+  max-width: 400px;
+  max-height: 500px;
+  width: 100%;
+  height: 100%;
+}
+
+/* 이전 버튼 아이콘 (왼쪽 화살표) */
+.carousel-control-prev-icon {
+    /* filter 속성을 제거하거나 조정하여 색상을 변경 */
+    /* 현재 흰색 아이콘에 적용된 filter를 제거 */
+    filter: none; 
+    
+    /* 대신 검은색으로 변경하는 filter를 적용 */
+    /* 100% 밝기(흰색)를 0% 밝기(검은색)로 바꿉니다. */
+    filter: invert(100%); 
+}
+
+/* 다음 버튼 아이콘 (오른쪽 화살표) */
+.carousel-control-next-icon {
+    /* 현재 흰색 아이콘에 적용된 filter를 제거 */
+    filter: none; 
+    
+    /* 대신 검은색으로 변경하는 filter를 적용 */
+    filter: invert(100%);
+}
+
+
+/* ⭐⭐ CSS 파일 또는 <style> 태그의 내용을 이 코드로 덮어쓰거나 수정하세요. ⭐⭐ */
+
+/* 1. 전체 미리보기 컨테이너: 가로 배치, 줄 바꿈, 간격 설정 */
+#status-message {
+    display: flex; 
+    flex-wrap: wrap; /* ⭐ 줄 바꿈 허용 (여전히 필수) ⭐ */
+    
+    /* 항목 간의 간격(gap)을 줍니다. 가로/세로 모두 10px 간격 */
+    gap: 10px; 
+    
+    margin-top: 15px;
+    padding: 10px;
+}
+
+/* 2. 각 사진 항목의 너비 설정: calc()를 사용해 정확히 2개씩 배치되도록 합니다. */
+.image-item {
+    /* (전체 100% - 간격 10px) / 2 = 49.5% 가 나오도록 계산 */
+    width: calc(50% - 5px); 
+    
+    /* 항목이 줄어드는 것을 방지하여 줄 바꿈을 강제합니다. */
+    flex-shrink: 0; 
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+}
+
+/* 3. 이미지 스타일 */
+.image-item img {
+    max-width: 300px;
+    height: 600px;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 5px;
+    margin-bottom: 5px;
+}

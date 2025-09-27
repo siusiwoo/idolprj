@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    
+
     <style>
         /* ===========================
             기본 스타일
@@ -39,7 +40,8 @@
 
         .login-container {
             max-width: 400px;
-            margin: 150px auto 50px; /* 헤더 공간을 확보하기 위해 위쪽 마진을 넉넉히 줍니다. */
+            margin: 150px auto 50px;
+            /* 헤더 공간을 확보하기 위해 위쪽 마진을 넉넉히 줍니다. */
             padding: 30px;
             background-color: #fff;
             border-radius: 8px;
@@ -79,14 +81,16 @@
         .side-menu {
             position: fixed;
             top: 0;
-            left: -100%; /* 화면 왼쪽 밖으로 메뉴를 숨깁니다. */
+            left: -100%;
+            /* 화면 왼쪽 밖으로 메뉴를 숨깁니다. */
             width: 80%;
             max-width: 300px;
             height: 100%;
             background-color: white;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
             z-index: 100;
-            transition: left 0.4s ease-in-out; /* '좌라락' 애니메이션 효과 */
+            transition: left 0.4s ease-in-out;
+            /* '좌라락' 애니메이션 효과 */
             display: flex;
             flex-direction: column;
             padding: 20px;
@@ -107,7 +111,8 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 99;
-            opacity: 0; /* 투명도를 0으로 설정해 숨김 */
+            opacity: 0;
+            /* 투명도를 0으로 설정해 숨김 */
             visibility: hidden;
             transition: opacity 0.4s ease-in-out;
         }
@@ -134,7 +139,8 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .singup-btn{
+
+        .singup-btn {
             padding: 10px 20px;
             background-color: white;
             color: black;
@@ -149,6 +155,7 @@
             width: 25px;
             height: 25px;
         }
+
         header {
             height: 57px;
             padding: 10px;
@@ -195,11 +202,13 @@
             width: 24px;
             height: 24px;
         }
-        .rogo-icon{
+
+        .rogo-icon {
             width: 24px;
             height: 24px;
         }
-        .header-left{
+
+        .header-left {
             margin-left: 30px;
         }
 
@@ -217,7 +226,6 @@
             font-size: 0.8em;
             margin-top: 5px;
         }
-
     </style>
 </head>
 
@@ -241,7 +249,7 @@
                 <img src="./img/프로미스나인 로고.jpg" alt="프로미스나인 로고" class="rogo-icon" />
             </span>
             <span>
-                <h2 class="archivo-black-regular name">fromis_9</h2>
+                <h2 class="archivo-black-regular name " id="from_menu">fromis_9</h2>
             </span>
         </div>
         <div class="header-right">
@@ -276,7 +284,7 @@
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary" id="loginButton">로그인</button>
-           
+
             </div>
         </form>
     </div>
@@ -296,7 +304,7 @@
             const passwordInput = document.getElementById('password');
             const usernameValidationMessage = document.getElementById('username-validation-message');
             const passwordValidationMessage = document.getElementById('password-validation-message');
-
+            const fromMenu = document.getElementById('from_menu');
 
             // 메뉴 열기 버튼을 클릭했을 때
             if (openMenuBtn && sideMenu && overlay) {
@@ -334,9 +342,9 @@
             if (loginPageBtn) {
                 loginPageBtn.addEventListener('click', (event) => {
                     event.preventDefault(); // 폼 제출 막기
-                    
+
                     let isValid = true;
-                    
+
                     // 아이디 유효성 검사
                     if (usernameInput.value.trim().length === 0) {
                         usernameValidationMessage.textContent = '아이디를 입력해 주세요.';
@@ -358,8 +366,17 @@
                         // 여기에 백엔드 서버로 로그인 정보를 전송하는 코드를 추가합니다.
                     }
                 });
+
             }
+            if (fromMenu) {
+                fromMenu.addEventListener('click', () => {
+                    window.location.href = 'MENU.HTML';
+                    alert('메인 페이지로 이동합니다!');
+                });
+            }
+
         });
     </script>
 </body>
+
 </html>

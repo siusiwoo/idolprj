@@ -273,8 +273,8 @@
         <h1 class="text-center mb-4">로그인</h1>
         <form>
             <div class="mb-3">
-                <label for="username" class="form-label">아이디</label>
-                <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요">
+                <label for="username" class="form-label">이메일</label>
+                <input type="email" class="form-control" id="username" placeholder="이메일을 입력하세요">
                 <div id="username-validation-message" class="id-invalid"></div>
             </div>
             <div class="mb-3">
@@ -290,6 +290,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <script src="supabase.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // HTML 요소들을 가져옵니다.
@@ -340,14 +342,14 @@
 
             // 로그인 폼의 로그인 버튼 클릭 시 유효성 검사
             if (loginPageBtn) {
-                loginPageBtn.addEventListener('click', (event) => {
+                loginPageBtn.addEventListener('click', async (event) => {
                     event.preventDefault(); // 폼 제출 막기
 
                     let isValid = true;
 
                     // 아이디 유효성 검사
                     if (usernameInput.value.trim().length === 0) {
-                        usernameValidationMessage.textContent = '아이디를 입력해 주세요.';
+                        usernameValidationMessage.textContent = '이메일을 입력해 주세요.';
                         isValid = false;
                     } else {
                         usernameValidationMessage.textContent = '';
@@ -362,8 +364,18 @@
                     }
 
                     if (isValid) {
-                        alert('로그인 시도!');
-                        // 여기에 백엔드 서버로 로그인 정보를 전송하는 코드를 추가합니다.
+                        // Supabase에 이메일+비밀번호로 로그인 요청
+                        const { error } = await sb.auth.signInWithPassword({
+                            email: usernameInput.value.trim(),
+                            password: passwordInput.value
+                        });
+
+                        if (error) {
+                            passwordValidationMessage.textContent = '이메일 또는 비밀번호가 틀렸어요.';
+                            return;
+                        }
+                        alert('로그인 성공!');
+                        window.location.href = 'MENU.HTML';
                     }
                 });
 
